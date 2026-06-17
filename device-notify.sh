@@ -209,14 +209,16 @@ case "$SUBSYSTEM" in
             elif [ -n "$ID_MODEL" ]; then
                 name="$ID_MODEL"
             fi
-            [ -n "$name" ] && echo "$name" > "$CACHE_DIR/$CACHE_KEY"
+            ICON="$(get_usb_icon "$name" "$DEVPATH")"
+            [ -n "$name" ] && echo "${name}|||${ICON}" > "$CACHE_DIR/$CACHE_KEY"
         elif [ "$ACTION" = "remove" ]; then
             if [ -f "$CACHE_DIR/$CACHE_KEY" ]; then
-                name=$(cat "$CACHE_DIR/$CACHE_KEY")
+                cached=$(cat "$CACHE_DIR/$CACHE_KEY")
+                name="${cached%%|||*}"
+                ICON="${cached##*|||}"
                 rm -f "$CACHE_DIR/$CACHE_KEY"
             fi
         fi
-        ICON="$(get_usb_icon "$name" "$DEVPATH")"
         if [ "$ACTION" = "add" ]; then
             TITLE="$TITLE_USB_CONNECT"
         else
@@ -275,14 +277,16 @@ case "$SUBSYSTEM" in
             elif [ -n "$ID_MODEL" ]; then
                 name=$(decode "$ID_MODEL")
             fi
-            [ -n "$name" ] && echo "$name" > "$CACHE_DIR/$CACHE_KEY"
+            ICON="drive-harddisk-usb"
+            [ -n "$name" ] && echo "${name}|||${ICON}" > "$CACHE_DIR/$CACHE_KEY"
         elif [ "$ACTION" = "remove" ]; then
             if [ -f "$CACHE_DIR/$CACHE_KEY" ]; then
-                name=$(cat "$CACHE_DIR/$CACHE_KEY")
+                cached=$(cat "$CACHE_DIR/$CACHE_KEY")
+                name="${cached%%|||*}"
+                ICON="${cached##*|||}"
                 rm -f "$CACHE_DIR/$CACHE_KEY"
             fi
         fi
-        ICON="drive-harddisk-usb"
         if [ "$ACTION" = "add" ]; then
             TITLE="$TITLE_DRIVE_CONNECT"
         else
