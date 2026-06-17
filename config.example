@@ -1,0 +1,68 @@
+# device-notify configuration
+# Place this file at: ~/.config/device-notify/config
+# All settings are optional — defaults work out of the box.
+
+# ──────────────────────────────────────────────
+#  Global
+# ──────────────────────────────────────────────
+
+# App name shown in the notification header
+# APP_NAME=Device Manager
+
+# Notification timeout in milliseconds (0 = persistent until dismissed)
+# TIMEOUT=5000
+
+# Notification urgency: low, normal, critical
+# URGENCY=normal
+
+# Override all device icons with a single icon name (leave empty for auto-detect)
+# NOTIFY_ICON=
+
+# ──────────────────────────────────────────────
+#  Notification Titles
+# ──────────────────────────────────────────────
+# Leave commented to use defaults. Uncomment and edit as needed.
+
+# TITLE_USB_CONNECT=USB Connected
+# TITLE_USB_DISCONNECT=USB Disconnected
+# TITLE_BT_CONNECT=Bluetooth Connected
+# TITLE_BT_DISCONNECT=Bluetooth Disconnected
+# TITLE_DRIVE_CONNECT=Drive Connected
+# TITLE_DRIVE_DISCONNECT=Drive Disconnected
+# TITLE_DEFAULT_CONNECT=Device Connected
+# TITLE_DEFAULT_DISCONNECT=Device Disconnected
+
+# ──────────────────────────────────────────────
+#  Device Icon Overrides
+# ──────────────────────────────────────────────
+# Format:  ICON_{device name}=icon-name
+# Matching: first match wins, * is a wildcard, case-insensitive.
+# Run "notify-send --list" or check /usr/share/icons for icon names.
+#
+# Common icon names:
+#   input-mouse, input-keyboard, input-gaming, input-tablet
+#   audio-headset, audio-speakers, audio-input-microphone
+#   drive-harddisk-usb, drive-removable-media
+#   camera-photo, camera-web, printer, scanner
+#   bluetooth, phone, tv
+
+# Examples — uncomment and edit for your devices:
+
+# ATK ZERO mouse
+# ICON_ATK ZERO=input-mouse
+
+# Wireless mouse dongle
+# ICON_Wireless mouse*=input-mouse
+
+# Kreo keyboard
+# ICON_Kreo Swarm*=input-keyboard
+
+# Generic patterns
+# ICON_*Gamepad*=input-gaming
+# ICON_*Controller*=input-gaming
+# ICON_*Headset*=audio-headset
+# ICON_*Speaker*=audio-speakers
+# ICON_*Keyboard*=input-keyboard
+# ICON_*Mouse*=input-mouse
+# ICON_*Tablet*=input-tablet
+# ICON_*Webcam*=camera-web

@@ -1,0 +1,15 @@
+# Device connect/disconnect notifications
+# Sends desktop notifications via notify-send for USB, storage, and Bluetooth events.
+# See: https://github.com/braga/device-notify
+
+# USB devices (only top-level device, not sub-interfaces)
+ACTION=="add",    SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", RUN+="/usr/local/bin/device-notify.sh"
+ACTION=="remove", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", RUN+="/usr/local/bin/device-notify.sh"
+
+# Block storage (USB drives, external disks)
+ACTION=="add",    SUBSYSTEM=="block", ENV{ID_BUS}=="usb", RUN+="/usr/local/bin/device-notify.sh"
+ACTION=="remove", SUBSYSTEM=="block", ENV{ID_BUS}=="usb", RUN+="/usr/local/bin/device-notify.sh"
+
+# Bluetooth
+ACTION=="add",    SUBSYSTEM=="bluetooth", RUN+="/usr/local/bin/device-notify.sh"
+ACTION=="remove", SUBSYSTEM=="bluetooth", RUN+="/usr/local/bin/device-notify.sh"
